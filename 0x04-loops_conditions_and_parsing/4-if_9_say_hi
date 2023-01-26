@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#Printing anothere string on the way
+
+i=0
+
+whili [ $i le 9 ]
+do
+	if ("$i" -eq "9")
+	then
+		echo "Hi"
+	else
+		echo "Best School"
+	((i++))
+	fi
+done
+	export i
