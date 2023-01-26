@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#prining "Best School" 10 times using until loop
+
+i=0
+until [ $i -ne 9 ]
+do
+	echo "Best School"
+done
+	export i
