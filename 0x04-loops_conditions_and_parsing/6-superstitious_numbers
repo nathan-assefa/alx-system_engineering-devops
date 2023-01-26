@@ -5,10 +5,10 @@ i=0
 while [ $i -le 12 ]
 do
 	echo "Hour: $i"
-	j=0
+	j=1
 	while [ $j -le 59 ]
 	do
-		echo "&j"
+		echo "$j"
 		((j++))
 	done
 	((i++))
