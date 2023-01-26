@@ -2,8 +2,9 @@
 #prining "Best School" 10 times using until loop
 
 i=0
-until [ $i -ne 9 ]
+until [ $i -gt 9 ]
 do
 	echo "Best School"
+	((i++))
 done
 	export i
