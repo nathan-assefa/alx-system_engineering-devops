@@ -3,14 +3,14 @@
 
 i=0
 
-whili [ $i le 9 ]
+while [ $i -le 9 ]
 do
-	if ("$i" -eq "9")
+	if [ "$i" -eq 8 ]
 	then
 		echo "Hi"
 	else
 		echo "Best School"
-	((i++))
 	fi
+	((i++))
 done
 	export i
