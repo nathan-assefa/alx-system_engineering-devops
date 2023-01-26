@@ -1,2 +1,17 @@
 #!/usr/bin/env bash
-#
+#Priting 3 different strings line by line
+
+i=0
+while [ $i le 9]
+do
+	if (($i == 4))
+	then
+		echo "bad luck"
+	elif ($i == 8))
+		echo "good luck"
+	else
+		echo "Best School"
+	fi
+	((i++))
+done
+	export i
