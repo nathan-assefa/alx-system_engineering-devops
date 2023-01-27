@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#Script to shoe bash id
+
+ps -aufx | grep bash
