@@ -2,7 +2,7 @@
 #Write a Bash script that displays a string and displays
 #+ another message when SIGTERM signal
 
-trap "echo I am invincible!!!" SIGTERM
+trap "echo I am invincible!!!" 15
 while true;
 do
 	echo "To infinity and beyond"
