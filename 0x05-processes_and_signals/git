@@ -1,0 +1,5 @@
+#!/bin/bash
+chmod +x *
+git add .
+git commit -m '0x05-processes_and_signals'
+git push
