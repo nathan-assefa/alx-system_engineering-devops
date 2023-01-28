@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-#prints strings indefinitely
-
-for ((;;))
-do
-	echo "I am alive!">>/tmp/my_process
-	sleep 2
-done
