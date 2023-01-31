@@ -1,0 +1,5 @@
+#!/bin/bash
+chmod +x *.rb
+git add .
+git commit -m '0x06-regular_expressions'
+git push
