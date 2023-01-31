@@ -1,3 +1,3 @@
 #!/usr/bin/env ruby
 
-puts ARGV[0].scan(/\w+/).join
+puts ARGV[0].scan(/[School]{6}/).join
