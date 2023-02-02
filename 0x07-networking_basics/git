@@ -1,0 +1,5 @@
+#!/bin/bash
+chmod +x *-*
+git add .
+git commit -m '0x07-networking_basics'
+git push
