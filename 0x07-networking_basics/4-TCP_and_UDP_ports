@@ -1,1 +1,4 @@
-#!
+#!/usr/bin/env bash
+#this script shows listening pors
+
+netstat -l --program
