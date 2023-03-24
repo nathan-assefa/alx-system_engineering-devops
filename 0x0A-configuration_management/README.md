@@ -1,2 +1,1 @@
-# 0x0A. Configuration management
-Basics of puppet configuration management tool
+# 0x0A-configuration_management
