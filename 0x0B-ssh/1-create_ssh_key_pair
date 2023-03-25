@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 # This script crates RSA key pairs
+# -f flag is used to set the name of the private key
+# -N flag is used to set the passphrase(password)
 
 ssh-keygen -t rsa -f school -b 4096 -N betty
