@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#script for git
 git add .
 git commit -m '0x0B-ssh'
 git push
