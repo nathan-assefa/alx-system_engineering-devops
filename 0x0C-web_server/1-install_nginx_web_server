@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-#Install nginx web server
-
+# installs nginx and changes default html file
 apt-get -y update
 apt-get -y install nginx
 echo 'Hello World!' > /var/www/html/index.html
