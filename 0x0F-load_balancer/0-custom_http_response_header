@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# configures a new ubuntu server as follows:
-#	- apt-get update
-# 	- install nginx
-#	- set X-Served-By header
-#	- restart server
+# configuration of new server with the help of 'sed' command
+# +We first update the packages
+# +Secondwe installing nginx
+# +Using sed command insert a new header
+# +Finally restarting ngnix
 apt-get -y update
 apt-get -y install nginx
 sed -i 'listen 80 default_server/a add_header X-Served-By $HOSTNAME;/' /etc/nginx/sites-available/default
