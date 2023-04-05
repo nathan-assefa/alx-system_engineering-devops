@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Making ubuntu conatainer listen to port 80 of its nginx web server
-sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+sed -i "s/8080/80/g" /etc/nginx/sites-enabled/default
 service nginx restart
