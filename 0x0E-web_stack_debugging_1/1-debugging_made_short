@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # making port 80 by swaping ports
 sed -i "s/8080/80/g" /etc/nginx/sites-enabled/default
-pkill -o nginx
+pkill -SIGHUP nginx
