@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 # making port 80 by swaping ports
-rm /etc/nginx/sites-enabled/default
-ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-service nginx restart
+sudo sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+sudo pkill -1 nginx
