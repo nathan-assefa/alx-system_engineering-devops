@@ -17,6 +17,7 @@ if __name__ == '__main__':
 
     prim_url = 'https://jsonplaceholder.typicode.com'
     name_endpoint = '/users/{}'
+    tode_endpoint = '/todos?userId={}'
 
     # here we find the name of the user from /users/id endpoint
     name_res = requests.get(prim_url + name_endpoint.format(argv[1]))
@@ -24,7 +25,7 @@ if __name__ == '__main__':
     name = _dict1['name']
 
     # here we find the python object that represents the todos list
-    todos_res = requests.get(prim_url + '/todos', params={'userId': argv[1]})
+    todos_res = requests.get(prim_url + tode_endpoint.format(argv[1]))
     todos = todos_res.json()
 
     # let us count the completed task by user using the sum function
@@ -39,4 +40,5 @@ if __name__ == '__main__':
     # print the title of completed task
     for task in todos:
         if task['completed']:
-            print('\t {}'.format(task['title']))
+            print('\t ', end='')
+            print(task['title'])
