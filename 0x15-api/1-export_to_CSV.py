@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 """ this script writes into csv file """
 
+
 import csv
 import requests
 import sys
+
 
 if __name__ == "__main__":
     user_id = sys.argv[1]
