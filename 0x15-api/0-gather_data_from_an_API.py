@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """
 This script talks to jsonplaceholder api to fetch
 data about a user that includes the name of the user from
@@ -36,7 +37,6 @@ if __name__ == '__main__':
     print('Employee {} is done with tasks({}/{})'.format(
         name, completed_tasks, total_completed_tasks))
 
-    
     # print the title of completed task
     for task in todos:
         if task['completed']:
