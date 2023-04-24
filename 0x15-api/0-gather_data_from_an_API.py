@@ -10,6 +10,7 @@ import sys
 
 
 if __name__ == __main__:
+    """ talking to jsonplaceholder api """
     # The base URL for the API
     base_url = 'https://jsonplaceholder.typicode.com'
 
