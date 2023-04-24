@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" this script writes into csv file """
+""" Exports to-do list information for a given employee ID to CSV format. """
 
 
 import csv
