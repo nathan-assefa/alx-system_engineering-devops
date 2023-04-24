@@ -13,14 +13,8 @@ if __name__ == "__main__":
     username = user.get("username")
     todos = requests.get(url + "todos", params={"userId": user_id}).json()
 
-    with open(f"{user_id}.csv", "w", newline="") as csvfile:
-        writer = csv.DictWriter(csvfile, fieldnames=[
-            "USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"
-            ])
-        for todo in todos:
-            writer.writerow({
-                "USER_ID": user_id,
-                "USERNAME": username,
-                "TASK_COMPLETED_STATUS": str(todo["completed"]),
-                "TASK_TITLE": todo["title"]
-            })
+    with open("{}.csv".format(user_id), "w", newline="") as csvfile:
+        writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+        [writer.writerow(
+            [user_id, username, t.get("completed"), t.get("title")]
+         ) for t in todos]
