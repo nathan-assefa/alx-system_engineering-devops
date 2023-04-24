@@ -1,7 +1,13 @@
 #!/usr/bin/python3
-"""Returns to-do list information for a given employee ID."""
+""" This script talks to jsonplaceholder api to fetch
+data about a user that includes the name of the user from
+/users api endpoint and todo lists from todos?userId={} api
+endpoint """
+
+
 import requests
-import sys
+from sys import argv
+
 
 if __name__ == '__main__':
     """ fetching some data about user using third party api """
