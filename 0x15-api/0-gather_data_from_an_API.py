@@ -1,8 +1,10 @@
 #!/usr/bin/python3
-""" This script talks to jsonplaceholder api to fetch
+"""
+This script talks to jsonplaceholder api to fetch
 data about a user that includes the name of the user from
 /users api endpoint and todo lists from todos?userId={} api
-endpoint """
+endpoint
+"""
 
 
 import requests
