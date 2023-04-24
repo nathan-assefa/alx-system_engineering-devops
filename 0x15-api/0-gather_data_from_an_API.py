@@ -3,6 +3,7 @@
 import requests
 import sys
 
+
 if __name__ == '__main__':
     """ fetching some data about user using third party api """
 
