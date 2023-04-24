@@ -36,6 +36,7 @@ if __name__ == '__main__':
     print('Employee {} is done with tasks({}/{})'.format(
         name, completed_tasks, total_completed_tasks))
 
+    
     # print the title of completed task
     for task in todos:
         if task['completed']:
