@@ -8,6 +8,7 @@ endpoint """
 import requests
 from sys import argv
 
+
 if __name__ == '__main__':
     """ fetching some data about user using third party api """
 
