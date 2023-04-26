@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+!/usr/bin/python3
 
 """
 This script talks to jsonplaceholder api to fetch
