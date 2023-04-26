@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """ Using task 3 Python script to export data in the JSON format. """
+
+
 import requests
 import sys
 import json
