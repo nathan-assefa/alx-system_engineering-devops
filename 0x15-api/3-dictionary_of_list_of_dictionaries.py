@@ -11,6 +11,7 @@ if __name__ == "__main__":
     response = requests.get(url)
     users = response.json()
     todo_data = {}
+
     for user in users:
         url = f"https://jsonplaceholder.typicode.com/users/{user['id']}/todos"
         response = requests.get(url)
