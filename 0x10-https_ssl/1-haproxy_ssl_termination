@@ -22,10 +22,10 @@ global
 defaults
         log     global
         mode    http
-        option  httplog
-        option  dontlognull
         option forwardfor
         option http-server-close
+        option  httplog
+        option  dontlognull
         timeout connect 5000
         timeout client  50000
         timeout server  50000
@@ -51,7 +51,7 @@ frontend firstbalance
 backend web_servers
         balance  roundrobin
         redirect scheme https if !{ ssl_fc }
-        server web-01 35.153.52.120:80
-        server web-02 52.91.183.3:80
+        server web-01 54.173.114.81:80
+        server web-02 54.210.188.25:80
 backend letsencrypt-backend
     server letsencrypt 127.0.0.1:54321
