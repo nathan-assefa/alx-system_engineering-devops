@@ -7,9 +7,8 @@ data about a user that includes the name of the user from
 endpoint
 """
 
-
-import requests
 import json
+import requests
 
 
 if __name__ == "__main__":
@@ -22,14 +21,15 @@ if __name__ == "__main__":
     todos = requests.get(url + "todos?").json()
 
     emp_data = {
-            user.get('id'): [
-                {
-                    "username": user.get('username'),
-                    "task": task.get("title"),
-                    "completed": task.get("completed")
-                    }
-                for task in todos
-        ] for user in users
+        user.get("id"): [
+            {
+                "task": task.get("title"),
+                "completed": task.get("completed"),
+                "username": user.get("username")
+            }
+            for task in todos
+        ]
+        for user in users
     }
-    with open('todo_all_employees.json', 'w') as jsonfile:
+    with open("todo_all_employees.json", "w") as jsonfile:
         json.dump(emp_data, jsonfile)
