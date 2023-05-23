@@ -18,23 +18,22 @@ if __name__ == "__main__":
 
     # find the user name from the 'users' end point, and parse it
     user = requests.get(url + "users/{}".format(argv[1])).json()
-    user_name = user.get('username')
-    user_id = user.get('id')
+    user_name = user.get("username")
+    user_id = user.get("id")
 
     # find the list of todos and parse it into python list
     todos = requests.get(url + "todos?userId={}".format(argv[1])).json()
 
-
     # let define the name of the file
-    file_name = '{}.csv'.format(argv[1])
+    file_name = "{}.csv".format(argv[1])
 
     # let us create and open the file as csv file
-    with open(file_name, 'w') as csvfile:
+    with open(file_name, "w") as csvfile:
         # let us create the 'writer' object that helps us to wrap our
         # file with csv library functionality
         writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
 
         for task in todos:
             writer.writerow(
-                    [user_id, user_name, task.get('completed'), task.get('title')]
-                    )
+                [user_id, user_name, task.get("completed"), task.get("title")]
+            )
