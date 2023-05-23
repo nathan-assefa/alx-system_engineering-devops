@@ -23,9 +23,9 @@ if __name__ == "__main__":
     emp_data = {
         user.get("id"): [
             {
+                "username": user.get("username"),
                 "task": task.get("title"),
                 "completed": task.get("completed"),
-                "username": user.get("username")
             }
             for task in todos
         ]
