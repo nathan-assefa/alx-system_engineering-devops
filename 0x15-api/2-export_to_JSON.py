@@ -1,19 +1,42 @@
 #!/usr/bin/python3
-"""Exporting todos list information for a given employee ID to JSON format"""
-import json
+
+"""
+This script talks to jsonplaceholder api to fetch
+data about a user that includes the name of the user from
+/users api endpoint and todo lists from todos?userId={} api
+endpoint
+"""
+
+
 import requests
-import sys
+import csv
+from sys import argv
+import json
+
 
 if __name__ == "__main__":
-    user_id = sys.argv[1]
     url = "https://jsonplaceholder.typicode.com/"
-    user = requests.get(url + "users/{}".format(user_id)).json()
-    username = user.get("username")
-    todos = requests.get(url + "todos", params={"userId": user_id}).json()
 
-    with open("{}.json".format(user_id), "w") as jsonfile:
-        json.dump({user_id: [{
-                "task": t.get("title"),
-                "completed": t.get("completed"),
-                "username": username
-            } for t in todos]}, jsonfile)
+    # find the user name from the 'users' end point, and parse it
+    user = requests.get(url + "users/{}".format(argv[1])).json()
+    user_name = user.get("username")
+    user_id = user.get("id")
+
+    # find the list of todos and parse it into python list
+    todos = requests.get(url + "todos?userId={}".format(argv[1])).json()
+
+    # let define the name of the file
+    file_name = "{}.json".format(argv[1])
+
+    emp_data = {
+        user_id: [
+            {
+                "task": task.get("title"),
+                "completed": task.get("completed"),
+                "username": user_name,
+            }
+            for task in todos
+        ]
+    }
+    with open(file_name, 'w') as jsonfile:
+        json.dump(emp_data, jsonfile)
