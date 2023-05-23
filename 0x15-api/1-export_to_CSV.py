@@ -7,25 +7,24 @@ data about a user that includes the name of the user from
 endpoint
 """
 
-
-import requests
 import csv
-from sys import argv
+import requests
+import sys
 
 
 if __name__ == "__main__":
     url = "https://jsonplaceholder.typicode.com/"
 
     # find the user name from the 'users' end point, and parse it
-    user = requests.get(url + "users/{}".format(argv[1])).json()
+    user = requests.get(url + "users/{}".format(sys.argv[1])).json()
     user_name = user.get("username")
     user_id = user.get("id")
 
     # find the list of todos and parse it into python list
-    todos = requests.get(url + "todos?userId={}".format(argv[1])).json()
+    todos = requests.get(url + "todos?userId={}".format(sys.argv[1])).json()
 
     # let define the name of the file
-    file_name = "{}.csv".format(argv[1])
+    file_name = "{}.csv".format(sys.argv[1])
 
     # let us create and open the file as csv file
     with open(file_name, "w") as csvfile:

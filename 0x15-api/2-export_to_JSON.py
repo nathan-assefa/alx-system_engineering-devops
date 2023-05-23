@@ -7,7 +7,6 @@ data about a user that includes the name of the user from
 endpoint
 """
 
-import csv
 import json
 import requests
 import sys
