@@ -6,31 +6,28 @@ list containing the titles of all hot articles for a given subreddit  """
 import requests
 
 
-def recurse(subreddit, hot_list=[], after=None):
-    """ Recursive funtion that queries the Reddit API """
-
-    url = f"https://www.reddit.com/r/{subreddit}/hot.json"
-    headers = {'User-Agent': 'MyRedditScript/1.0 (Linux; Python)'}
-    params = {"limit": 100, "after": after} if after else {"limit": 100}
-
-    try:
-        response = requests.get(
-                url, headers=headers, params=params, allow_redirects=False
-                )
-        data = response.json()
-
-        if response.status_code == 200:
-            posts = data.get("data", {}).get("children", [])
-            for post in posts:
-                title = post.get("data", {}).get("title")
-                hot_list.append(title)
-
-            after = data.get("data", {}).get("after")
-            if after:
-                return recurse(subreddit, hot_list, after=after)
-            else:
-                return hot_list
-        else:
-            return None
-    except requests.exceptions.RequestException as e:
+def recurse(subreddit, hot_list=[], after="", count=0):
+    """Returns a list of titles of all hot posts on a given subreddit."""
+    url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
+    headers = {
+        "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
+    }
+    params = {
+        "after": after,
+        "count": count,
+        "limit": 100
+    }
+    response = requests.get(url, headers=headers, params=params,
+                            allow_redirects=False)
+    if response.status_code == 404:
         return None
+
+    results = response.json().get("data")
+    after = results.get("after")
+    count += results.get("dist")
+    for c in results.get("children"):
+        hot_list.append(c.get("data").get("title"))
+
+    if after is not None:
+        return recurse(subreddit, hot_list, after, count)
+    return hot_list
