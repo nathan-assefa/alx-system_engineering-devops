@@ -19,7 +19,7 @@ def number_of_subscribers(subreddit):
 
     try:
         # Make the HTTP request to the Reddit server
-        response = requests.get(url, headers=headers)
+        response = requests.get(url, headers=headers, allow_redirects=False)
 
         if response.status_code == 200:
             no_of_subscribers = response.json()["data"]["subscribers"]
