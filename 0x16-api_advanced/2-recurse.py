@@ -12,10 +12,7 @@ def recurse(subreddit, hot_list=[], after=""):
     headers = {
         "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
     }
-    params = {
-        "after": after,
-        "limit": 100
-    }
+    params = {"after": after, "limit": 100} if after else {"limit": 100}
     response = requests.get(url, headers=headers, params=params,
                             allow_redirects=False)
     if response.status_code == 404:
