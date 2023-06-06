@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/bash
 """ Writing a recursive function that queries the Reddit API and returns a
 list containing the titles of all hot articles for a given subreddit  """
 
@@ -7,30 +7,28 @@ import requests
 
 
 def recurse(subreddit, hot_list=[], after=None):
-    """ Recursive funtion that queries the Reddit API """
+    URL = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
+    HEADERS = {'User-Agent': 'Unix:0-subs:v1'}
+    params = {'limit': 100}
 
-    url = f"https://www.reddit.com/r/{subreddit}/hot.json"
-    headers = {'User-Agent': 'MyRedditScript/1.0 (Linux; Python)'}
-    params = {"limit": 100, "after": after} if after else {"limit": 100}
+    if after and after != "STOP":
+        params['after'] = after
 
-    try:
-        response = requests.get(
-                url, headers=headers, params=params, allow_redirects=False
-                )
-        data = response.json()
+    response = requests.get(URL, headers=HEADERS, params=params)
+    data = response.json().get('data', {})
 
-        if response.status_code == 200:
-            posts = data.get("data", {}).get("children", [])
-            for post in posts:
-                title = post.get("data", {}).get("title")
-                hot_list.append(title)
-
-            after = data.get("data", {}).get("after")
-            if after:
-                return recurse(subreddit, hot_list, after=after)
-            else:
-                return hot_list
-        else:
-            return None
-    except requests.exceptions.RequestException as e:
+    if response.status_code != 200 or not data:
         return None
+
+    after = data.get('after', 'STOP')
+    posts = data.get('children', [])
+
+    hot_list += [post.get('data', {}).get('title') for post in posts]
+
+    if not after:
+        after = "STOP"
+
+    if after == "STOP":
+        return hot_list[:10]
+
+    return recurse(subreddit, hot_list, after)
