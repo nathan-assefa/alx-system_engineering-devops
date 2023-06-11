@@ -1,12 +1,10 @@
 # Postmortem
 
-Upon the release of ALX's System Engineering & DevOps project 0x19, approximately 06:00 West African Time (WAT) here in Nigeria, an outage occurred on an isolated Ubuntu 14.04 container running an Apache web server. GET requests on the server led to 500 Internal Server Error's, when the expected response was an HTML file defining a simple Holberton WordPress site.
+When the new ALX DevOps project is released, I was about to make a request to the web server running on the ubuntu 14.04 container, and I was expecting a web page. However, the server returns 500 internal server Erros's. 
 
 ## Debugging Process
 
-Bug debugger Bamidele (Lexxyla... as in my actual initials... made that up on the spot, pretty
-good, huh?) encountered the issue upon opening the project and being, well, instructed to
-address it, roughly 19:20 PST. He promptly proceeded to undergo solving the problem.
+I had to use the command line tool called 'strace' in order to know what was causing the server to respond the 500 internal server error. Strace is a command line tool that helps devlopers to identify the system calles during the execution of a program. In addition tostrace, I have also use 'tmux' which is another command line tool that provides additional terminal whithin a single terminal. I know this sounds wired but this is what it is. What tmux does is that it provides us additional bash terminal whithin a singel terminal so that we do have to move back and forth as we do the debugging. This are the steps I followed in order to fix the apache web server. 
 
 1. Checked running processes using `ps aux`. Two `apache2` processes - `root` and `www-data` -
 were properly running.
@@ -46,14 +44,14 @@ Patch involved a simple fix on the typo, removing the trailing `p`.
 This outage was not a web server error, but an application error. To prevent such outages
 moving forward, please keep the following in mind.
 
-* Test! Test test test. Test the application before deploying. This error would have arisen
-and could have been addressed earlier had the app been tested.
+* Testing should take precedence over deploying an application before. This error would have arisen
+and could have been addressed earlier if the app had been tested.
 
 * Status monitoring. Enable some uptime-monitoring service such as
 [UptimeRobot](./https://uptimerobot.com/) to alert instantly upon outage of the website.
 
 Note that in response to this error, I wrote a Puppet manifest
-[0-strace_is_your_friend.pp](https://github.com/lexxyla/alx-system_engineering-devops/blob/main/0x17-web_stack_debugging_3/0-strace_is_your_friend.pp)
+[0-strace_is_your_friend.pp]()
 to automate fixing of any such identitical errors should they occur in the future. The manifest
 replaces any `phpp` extensions in the file `/var/www/html/wp-settings.php` with `php`.
 
